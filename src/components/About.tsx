@@ -87,7 +87,7 @@ const About = () => {
               className="text-2xl md:text-3xl font-bold mb-6 text-gradient-accent"
               variants={itemVariants}
             >
-              My Journey
+              About Me
             </motion.h3>
             <motion.div className="space-y-4 text-muted-foreground" variants={itemVariants}>
               <p>

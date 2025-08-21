@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Github, Linkedin, Mail, Twitter, Heart, ArrowUp } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Github, Linkedin, Mail, Twitter, Heart, ArrowUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import INFO from "@/lib/info";
 
 const Footer = () => {
   const [ref, inView] = useInView({
@@ -10,28 +11,28 @@ const Footer = () => {
   });
 
   const quickLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Home", href: "#hero" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com', icon: Github },
-    { name: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
-    { name: 'Twitter', href: 'https://twitter.com', icon: Twitter },
-    { name: 'Email', href: 'mailto:alex@example.com', icon: Mail },
+    { name: "GitHub", href: INFO?.GIT_HUB_URL, icon: Github },
+    { name: "LinkedIn", href: INFO?.LINKEDIN_URL, icon: Linkedin },
+    { name: "Twitter", href: "https://twitter.com", icon: Twitter },
+    { name: "Email", href: `mailto:${INFO?.EMAIL}`, icon: Mail },
   ];
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -62,7 +63,10 @@ const Footer = () => {
         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-primary rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={ref}>
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        ref={ref}
+      >
         {/* Main Footer Content */}
         <motion.div
           className="py-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8"
@@ -76,8 +80,7 @@ const Footer = () => {
               Md Yousuf Sheikh
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Passionate React Native developer creating exceptional mobile experiences 
-              with modern technologies. Let's build something amazing together.
+              {INFO?.FOOTER_SUMMARY}
             </p>
             <div className="flex gap-4">
               {socialLinks.map((link) => (
@@ -125,19 +128,17 @@ const Footer = () => {
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
                 <a
-                  href="mailto:alex@example.com"
+                  href={`mailto:${INFO?.EMAIL}`}
                   className="hover:text-foreground transition-colors"
                 >
-                  alex@example.com
+                  {INFO?.EMAIL}
                 </a>
               </div>
-              <div className="text-muted-foreground">
-                San Francisco, CA
-              </div>
+              <div className="text-muted-foreground">{INFO?.ADDRESS}</div>
               <Button
                 variant="hero"
                 size="sm"
-                onClick={() => scrollToSection('#contact')}
+                onClick={() => scrollToSection("#contact")}
                 className="mt-4"
               >
                 Get In Touch
@@ -154,11 +155,9 @@ const Footer = () => {
           animate={inView ? "visible" : "hidden"}
         >
           <div className="text-muted-foreground text-sm flex items-center gap-2">
-            <span>© 2024 Md Yousuf Sheikh. Made with</span>
-            <Heart className="h-4 w-4 text-red-500 fill-current" />
-            <span>and lots of ☕</span>
+            <span>© Designed and Developed by {INFO?.USER_NAME}</span>
           </div>
-          
+
           <div className="flex items-center gap-4">
             <div className="text-muted-foreground text-sm">
               Built with React, TypeScript & Tailwind CSS

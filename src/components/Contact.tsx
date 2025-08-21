@@ -1,13 +1,14 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { toast } from '@/hooks/use-toast';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/hooks/use-toast";
+import INFO from "@/lib/info";
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -16,10 +17,10 @@ const Contact = () => {
   });
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,33 +28,35 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email',
-      value: 'alex@example.com',
-      link: 'mailto:alex@example.com',
+      title: "Email",
+      value: INFO?.EMAIL,
+      link: `mailto:${INFO?.EMAIL}`,
     },
     {
       icon: Phone,
-      title: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      title: "Phone",
+      value: INFO?.PHONE,
+      link: `tel:${INFO?.PHONE}`,
     },
     {
       icon: MapPin,
-      title: 'Location',
-      value: 'San Francisco, CA',
-      link: 'https://maps.google.com',
+      title: "Location",
+      value: INFO?.ADDRESS,
+      link: "https://www.google.com/maps/place/Dhaka/@23.7808186,90.3372878",
     },
     {
       icon: Calendar,
-      title: 'Available',
-      value: 'Monday - Friday',
-      link: '#',
+      title: "Available",
+      value: "Everyday",
+      link: "#",
     },
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -64,7 +67,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
     toast({
       title: "Message sent successfully!",
@@ -72,10 +75,10 @@ const Contact = () => {
     });
 
     setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
     });
 
     setIsSubmitting(false);
@@ -102,14 +105,20 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-section bg-background relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-section bg-background relative overflow-hidden"
+    >
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={ref}>
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        ref={ref}
+      >
         <motion.div
           className="text-center mb-16"
           variants={containerVariants}
@@ -132,8 +141,8 @@ const Contact = () => {
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
             variants={itemVariants}
           >
-            Have a project in mind or want to discuss opportunities? 
-            I'd love to hear from you. Let's create something amazing together.
+            Have a project in mind or want to discuss opportunities? I'd love to
+            hear from you. Let's create something amazing together.
           </motion.p>
         </motion.div>
 
@@ -146,11 +155,13 @@ const Contact = () => {
           >
             <motion.div className="mb-8" variants={itemVariants}>
               <h3 className="text-2xl font-bold mb-4">
-                Ready to start your <span className="text-gradient-accent">next project?</span>
+                Ready to start your{" "}
+                <span className="text-gradient-accent">next project?</span>
               </h3>
               <p className="text-muted-foreground">
-                I'm always excited to take on new challenges and help bring your ideas to life. 
-                Whether it's a small website or a complex web application, let's discuss how we can work together.
+                I'm always excited to take on new challenges and help bring your
+                ideas to life. Whether it's a small website or a complex web
+                application, let's discuss how we can work together.
               </p>
             </motion.div>
 
@@ -164,7 +175,7 @@ const Contact = () => {
                 >
                   <a
                     href={info.link}
-                    target={info.link.startsWith('http') ? '_blank' : '_self'}
+                    target={info.link.startsWith("http") ? "_blank" : "_self"}
                     rel="noopener noreferrer"
                     className="block"
                   >

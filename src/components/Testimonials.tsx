@@ -38,33 +38,6 @@ const Testimonials = () => {
       text: 'Alex transformed our design concepts into a beautiful, responsive website. His communication throughout the project was excellent, and he provided valuable technical insights.',
       project: 'Corporate Website',
     },
-    {
-      id: 4,
-      name: 'David Thompson',
-      position: 'Founder, MobileTech Solutions',
-      avatar: '👨‍🚀',
-      rating: 5,
-      text: 'The mobile app Alex developed for us has been a huge success. His expertise in React Native and attention to user experience resulted in a 4.8-star rating on the app stores.',
-      project: 'Mobile Application',
-    },
-    {
-      id: 5,
-      name: 'Lisa Park',
-      position: 'Marketing Director, GrowthCo',
-      avatar: '👩‍💼',
-      rating: 5,
-      text: 'Alex created a powerful analytics dashboard that gives us real-time insights into our business. The visualizations are intuitive and the performance is exceptional.',
-      project: 'Analytics Dashboard',
-    },
-    {
-      id: 6,
-      name: 'James Wilson',
-      position: 'VP Engineering, ScaleUp',
-      avatar: '👨‍🔬',
-      rating: 5,
-      text: 'Alex helped us modernize our legacy system with a microservices architecture. His DevOps expertise and clean code practices have significantly improved our development workflow.',
-      project: 'System Modernization',
-    },
   ];
 
   const containerVariants = {
