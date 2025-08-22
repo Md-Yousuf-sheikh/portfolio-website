@@ -3,6 +3,8 @@ import { useInView } from "react-intersection-observer";
 import { Github, Linkedin, Mail, Twitter, Heart, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import INFO from "@/lib/info";
+import logo from "@/assets/logo.png";
+
 
 const Footer = () => {
   const [ref, inView] = useInView({
@@ -76,9 +78,13 @@ const Footer = () => {
         >
           {/* Brand Section */}
           <motion.div className="lg:col-span-2" variants={itemVariants}>
-            <div className="text-2xl font-bold text-gradient-primary font-poppins mb-4">
-              Md Yousuf Sheikh
-            </div>
+           
+               <img
+              src={logo}
+              alt="Md Yousuf Sheikh"
+              className="h-[40px] md:h-[40px]  lg:h-[40px] w-[40px] object-cover rounded-xl"
+            />
+   
             <p className="text-muted-foreground mb-6 max-w-md">
               {INFO?.FOOTER_SUMMARY}
             </p>

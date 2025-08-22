@@ -1,5 +1,6 @@
 const INFO = {
   GIT_HUB_URL: "https://github.com/Md-Yousuf-sheikh",
+  RESUME_URL: "https://github.com/Md-Yousuf-sheikh",
   LINKEDIN_URL: "",
   ABOUT_ME: "",
 
